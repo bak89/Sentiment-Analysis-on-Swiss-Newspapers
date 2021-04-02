@@ -1,0 +1,20 @@
+\section{Challenges}
+In diesem Abschnitt befassen wir uns mit den Herausforderungen, die sich während der Arbeit am Projekt herausgestellt haben, und wir diese behandelt haben.
+
+\subsubsection*{Finden des geeigneten \gls{dataset}s} 
+Unser erstes Problem war es, einen passenden Datensatz für unsere Bedürfnisse zu finden. Um ein Modell zu trainieren, brauchten wir einen Datensatz, der für die Sentiment-Analyse relevant, aber auch gross genug war, um ihn in Trainings- und Test-Sets aufzuteilen, ohne die Modellqualität zu verlieren. Zu unseren Gunsten hat Kaggle reichlich viele Beispiele von guten Datensätzen.
+
+\subsubsection*{\gls{virtual machine}}
+Unser zweites Problem bezieht sich auf unsere virtuelle Maschine. Diese war anfangs hardware-technisch nicht zureichend für unser Projekt ausgestattet, da unser Projekt sehr rechenintensive Programme verwendet. Nach Anfrage auf eine leistungsstärkere Maschine wurde dieses Problem gelöst. In der Zwischenzeit, sind wir wieder zu Google \gls{colab} umgezogen, dort waren bereits viele Abhängigkeiten installiert.
+
+\subsubsection*{Google \gls{colab}}
+Ein Problem, das wir mit \gls{colab} hatten, war, dass wir jedes Mal, wenn wir das Notebook öffneten, das \gls{dataset} neu importieren mussten. Dies nam jeweils eine grosse Menge an Zeit in Anspruch, da unser \gls{dataset} sehr gross ist. Wir haben auch versucht, \gls{colab} auf der virtuellen Maschine laufen zu lassen, aber \gls{colab} stoppt automatisch nach einer bestimmten Zeit die Ausführung, was nicht ideal für unsere Arbeit war, da das Trainieren eines Modells bis zu mehreren Stunden andauern kann. Letzten Endes stellte sich Anaconda als die geeignete Lösung hervor.
+
+\subsubsection*{\gls{anaconda} und \gls{jupyter}}
+Beim Übergang von \gls{colab} auf die \gls{virtual machine}, haben wir bei \gls{colab} eine Datei mit allen benötigten Libraries exportiert. Daraus haben wir auf der virtuellen Maschine mit \gls{anaconda} versucht, eine neue Umgebung zu erstellen, die alle Libraries von \gls{colab} enthält. Jedoch schlug die Ausführung mit \gls{anaconda} fehl, aufgrund eines Versionskonfliktes zwischen den Libraries. Womöglich hatte dieser Fehler einen Zusammenhang mit fehlenden Zugriffsrechten in der Systemadministration. Dementsprechend verwarfen wir die Idee eine neue Umgebung zu erstellen und arbeiteten auf der Standardumgebung von \gls{anaconda}, auf der alles ohne Probleme verlief.
+
+\subsubsection*{Grosse Verarbeitungszeiten}
+Sowohl auf \gls{colab} als auch lokal auf der virtuellen Maschine mit \gls{anaconda} ist die Verarbeitungsdauer der Datensätze mit dem Sentence Encoder mehrere Stunden lang. Um lange Wartezeiten zu umgehen, haben wir des Öfteren mit verkürzten Versionen unseres \gls{dataset}s gearbeitet. Für das finale Produkt, ist jedoch eine grosse Anzahl an Daten erforderlich, weshalb wir gegen Ende des Projektes unser Sentiment-Analysis-Model nochmals mit der ganzen Menge an Daten gefüttert haben.
+
+
+
