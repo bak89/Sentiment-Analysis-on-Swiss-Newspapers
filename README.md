@@ -26,6 +26,30 @@ Each jupyter notebook has its own **requirements** file:
 ### Prerequisites
 Change the file destinations in Jupyter files to suit your system.
 
+1. For scraping scripts to work you need to create an account for 2 APIs:
+- NewsApi https://newsapi.org/
+- GNews https://gnews.io/
+
+2. Install:
+```
+!pip install newsapi-python
+```
+
+3. Edit the file
+```
+\Sentiment-Analysis-on-Swiss-Newspapers\Project source\database_newspaper\gnewsapi.py
+```
+- adding tokens
+- modifying the output folders to create the database.
+
+4. For automation, I created a bat file and used it with **Windows Task Scheduler**, for its working edit the files:
+```
+- \Sentiment-Analysis-on-Swiss-Newspapers\Project source\database_newspaper\Combine_Script.bat
+- \Sentiment-Analysis-on-Swiss-Newspapers\Project source\database_newspaper\Scrap_Python_Script.bat
+```
+change the paths.
+
+
 ## Model Notebook
 This notebook is for creating a model for the German language.
 For this notebook, the datasets to be used is:
