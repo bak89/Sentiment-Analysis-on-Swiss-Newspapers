@@ -24,7 +24,8 @@
 	footskip=15mm
 }
 %---------------------------------------------------------------------------
-
+\usepackage{pdfpages}
+\usepackage{pdflscape}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} 
@@ -442,6 +443,8 @@ sorting=none
 %\setlength \epigraphrule {0pt}
 \AtBeginDocument{\renewcommand {\epigraphflush}{center}}
 \renewcommand {\sourceflush} {center}
+%\usepackage[export]{adjustbox}[2011/08/13]
+\usepackage{adjustbox}[2011/08/13]
 %---------------------------------------------------------------------------	
 
 %table
@@ -482,7 +485,10 @@ sorting=none
 %---------------------------------------------------------------------------
 \usepackage[acronym]{glossaries}
 %\usepackage[nonumberlist]{glossaries}
+\usepackage{glossaries}
+\usepackage{glossary-mcols}
 \makeglossaries
+\renewcommand*{\glspostdescription}{} % Removes dots at the end of each entry.
 \include{database/glossary}
 %---------------------------------------------------------------------------
 % Makeindex Package
@@ -541,10 +547,19 @@ sorting=none
 \include{section/technology}
 \include{section/dataset}
 \include{section/sentiment}
-\include{section/lesson}
 \include{section/challenges}
 \include{section/conclusion}
 \newpage\leavevmode\thispagestyle{plain}\newpage
+%---------------------------------------------------------------------------
+% Appendix
+%---------------------------------------------------------------------------
+\clearpage
+\phantomsection 
+\appendix
+\include{section/lesson}
+\include{section/attach}
+%\addcontentsline{toc}{section}{Index}
+%\printindex
 %---------------------------------------------------------------------------
 
 % Declaration
@@ -559,8 +574,8 @@ sorting=none
 %---------------------------------------------------------------------------
 \clearpage
 \phantomsection 
-\addcontentsline{toc}{section}{Glossary}
-\printglossary%[type=\acronymtype]
+\addcontentsline{toc}{section}{Index}
+\printglossary[style=mcolindex, title=Index]%[type=\acronymtype]
 %---------------------------------------------------------------------------
 
 % Bibliography
@@ -584,6 +599,16 @@ sorting=none
 \listoftables
 %---------------------------------------------------------------------------
 
+% Appendix
+%---------------------------------------------------------------------------
+\clearpage
+\phantomsection 
+\addcontentsline{toc}{section}{Attachments}
+\includepdf[pages=-]{Attachments.pdf}
+\includepdf[pages=-]{Tasks Giorgio Bakhiet Derias.pdf}
+\includepdf[landscape=true]{bachtime1.pdf}
+\includepdf[landscape=true]{bachtime2.pdf}
+%---------------------------------------------------------------------------
 % Index
 %---------------------------------------------------------------------------
 \clearpage
@@ -591,5 +616,4 @@ sorting=none
 \addcontentsline{toc}{section}{Index}
 \printindex
 %---------------------------------------------------------------------------
-
 \end{document}

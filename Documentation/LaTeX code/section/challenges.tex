@@ -1,24 +1,24 @@
 \section{Challenges}
-In this section, I look at the challenges that emerged during the work on the project and I covered them.
+In this section, I look at the challenges that emerged during the work on the project and how I covered them.
 \subsection{Project scaling}
-As written in the introduction, my partner in the team, could not continue this project with me, so under the advice of the professor, I decided to scale the project.
+As written in the introduction, my partner in the team could not continue this project with me so under the advice of the professor, I decided to scale the project.
 In doing so, the sentiment analysis went from 5 categories in the previous project to 2.
 
-\subsection{Finding the appropriate \gls{dataset}s} 
-My first problem was to find a suitable data set for my needs. To train a model, I needed a data set that was relevant for sentiment analysis, but also large enough to split into training and testing sets without losing model quality. To my credit, Kaggle and on the internet in general you can find everything you need.
+\subsection{Finding the appropriate datasets} 
+My second problem was to find a suitable data set for my needs. To train a model, I needed a data set that was relevant for sentiment analysis, but also large enough to split into training and testing sets without losing model quality. In my opinion, on Kaggle and the internet in general everything can be found.
 \subsection{Working environment}
-\subsubsection{\gls{virtual machine}}
-My second problem was on the virtual machine, the machine that was given to me unfortunately is not very fitting for the work that must perform in terms of performance, in fact I have made a request for a more powerful machine. In the time in which I got the new machine, I moved to Colab, a service offered by google, in which a lot of dependencies are already installed.
+\subsubsection{Virtual machine}
+My third problem was on the virtual machine, the machine that was given to me unfortunately is not very fitting for the work that must be performed in terms of performance, in fact I have made a request for a more powerful machine. In the time in which I got the new machine, I moved to Colab, a service offered by google, in which a lot of dependencies are already installed.
 
-\subsubsection{Google \gls{colab}}
+\subsubsection{Google Colab}
 The first problem I had with Colab is that every time we opened the notebook, I had to load the data, so this implied a big waste of time since the dataset is very large. I also tried to leave it in background on the virtual machine, but Colab after a certain time stops the runtime, so quite useless for my purpose, since to train the model takes several hours.
 In the end, Anaconda turned out to be the appropriate solution.
 
-\subsubsection{\gls{anaconda} und \gls{jupyter}}
-After the difficulties in Colab I decided to go back to the virtual machine, this time more powerful. I created a requirements file from Colab, so I could install all the libraries needed in a new environment. I also tried to create an environment just for the project, and after installing all the dependencies I found errors in the notebook. After several tests on different env's I also had problems installing some libraries. I wanted to avoid working on the base env of anaconda, but it was the only solution that worked. Probably due to system administration privileges. But on the virtual machine I solved all the problems about imports, the dataset remained loaded and the Tensorflow library was much faster.
+\subsubsection{Anaconda and Jupyter Notebook}
+After the difficulties in Colab I decided to go back to the virtual machine, this time more powerful. I created a requirements file from Colab, so I could install all the libraries needed in a new environment. I also tried to create an environment just for the project, and after installing all the dependencies I found errors in the notebook. After several tests on different env's I also had problems installing some libraries. I wanted to avoid working on the base env of anaconda, but it was the only solution that worked. Probably due to system administration privileges. But on the virtual machine I solved all the problems about imports, the dataset remained loaded and the \gls{Tensorflow} library was much faster.
 
 \subsubsection{Tensorflow and Jupyter}
-Unfortunately, even after troubleshooting Anaconda, I had several problems with Tensorflow in Jupyter including:
+Unfortunately, even after troubleshooting Anaconda, I had several problems with \gls{Tensorflow} in Jupyter including:
 \begin{itemize}
     \item ERROR: tensorflow-gpu 2.3.0 has requirement numpy<1.19.0,>=1.16.0, but you'll have numpy 1.19.5 which is incompatible.
     I solved it with:
@@ -47,9 +47,9 @@ In fact, in the virtual machine was present only the CPU but not a GPU, extendin
 Fortunately, BFH has set up an online environment specifically for machine learning tasks, this env allows students to use jupyter notebooks supported by very powerful GPUs.
 
 \subsubsection{Plotly}
-MLMP uses Jupyter-Lab and not Jupyter-Notebook, this difference is substantial regarding Plotly. In fact, by installing and importing Plotly as I would on a normal Jupyter-Notebook file I would have no problems.
-The problem I had was that I was unable to plot anything despite the imports.
-I solved it thanks to these command lines in the MLMP terminal:
+\gls{MLMP} uses Jupyter-Lab and not Jupyter-Notebook, this difference is substantial regarding \gls{Plotly}. In fact, by installing and importing \gls{Plotly} as I would on a normal Jupyter-Notebook file I would have no problems.
+The problem I had was that I was unable to \gls{plot} anything despite the imports.
+I solved it thanks to these command lines in the \gls{MLMP} terminal:
 \begin{enumerate}
     \item jupyter labextension list
     \item jupyter labextension install jupyterlab-plotly@4.8.2
@@ -62,17 +62,17 @@ In addition, I had to activate the Jupyter-Lab extensions and install:
     \item make a rebuild.
 \end{enumerate}
 
-Once these steps are done Plotly is set up correctly and running.
+Once these steps are done \gls{Plotly} is set up correctly and running.
 
 \subsection{Finding the appropriate model}
 This task took me a long time, as for the sentiment analysis problem the field is really huge.
-After several hours of research, I realized that BERT is the state of the art, as far as this field is concerned.
-The problem however is that even BERT being a new technology is still not perfect and there is only one way to implement it.
-Another obstacle is that BERT is a macro-set of other models, so I spent more time looking for the BERT model that was best suited.
+After several hours of research, I realized that \gls{BERT} is the state of the art, as far as this field is concerned.
+The problem however is that even \gls{BERT} being a new technology is still not perfect and there is only one way to implement it.
+Another obstacle is that \gls{BERT} is a macro-set of other models, so I spent more time looking for the \gls{BERT} model that was best suited.
 However, when I found the right model, I had the opposite problem, that is, I had no room for improvement, as it was already perfect. 
-I solved it by taking BERT as a model to compare and creating something of my own even if not perfect.
+I solved it by taking \gls{BERT} as a model to compare and creating something of my own even if not perfect.
 
-\subsection{News Api}
+\subsection{NewsApi}
 NewsApi's dev(free) mode has limitations such as:
 \begin{itemize}
     \item the content of articles is truncated to 200 characters,

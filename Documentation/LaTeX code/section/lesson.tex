@@ -1,30 +1,30 @@
-\section{Lesson learned}
-In this section I have described all the models I have created over time.
+\section{Appendix : Models created}
+In addition to the documentation, I have described in this section all the models I have created over time.
 From each model I learned something and realized what I could improve.
 The models are listed from first to second to last to show the learning journey.
 
 \subsection{First model: IMDb dataset}
-The first model I created was with BERT, without any framework I simply followed the official Tensorflow tutorial.
+The first model I created was with \gls{BERT}, without any framework I simply followed the official \gls{Tensorflow} tutorial.
 I trained this model the IMDb dataset.
 This model was purely for educational purposes, once trained the model the only work that actually there was to do was a little fine tuning.
-But honestly, I used this model only as an approach to get into the world of BERT, in fact I followed the tutorial of Tensorflow itself to get to this result.
+I used this model only as an approach to get into the world of \gls{BERT}, in fact I followed the tutorial of \gls{Tensorflow} itself to get to this result.
 For a thesis work I wanted to do something of my own, and not using code and tutorial that it can already find on the net, so I tried something different.
-After several searches I came across Ktrain.
+After several searches I came across \gls{Ktrain}.
 
 \subsubsection{Lesson learned}
 I learned how to configure a model with the optimizer, loss and metric.
 
 \textbf{What is optimizer?}\\
-Optimizers are used for improving speed and performance for training a specific model \cite{noauthor_tensorflow_nodate}. 
+Optimizers are used for improving speed and performance for training a specific model \cite{noauthor_tensorflow_nodate_optimizer}. 
 For my model I chose Adam optimizer. Adam optimization is a stochastic gradient descent method that is based on adaptive estimation of first order and second-order moments \cite{noauthor_tfkerasoptimizersadam_nodate}.
 
 \textbf{What is loss?}\\
  We use a loss function to determine how far the predicted values deviate from the actual values in the training data. We change the model weights to make the loss minimum, and that is what training is all about \cite{patnaik_loss_2018}.
  
-\textbf{What is metric?}\\Calculates how often predictions matches integer labels \cite{noauthor_tfkerasmetricssparsecategoricalaccuracy_nodate}.
+\textbf{What is a metric?}\\Calculates how often predictions matches integer labels \cite{noauthor_tfkerasmetricssparsecategoricalaccuracy_nodate}.
 
 \subsection{Second model: Ktrain - Hotel dataset}
-To be able to do something of my own I thought to work also on the dataset, so with Ktrain I did not use the IMDB dataset, but I opted for the Hotel Reviews dataset.
+To be able to do something of my own I thought to work also on the dataset, so with \gls{Ktrain} I did not use the IMDB dataset, but I opted for the Hotel Reviews dataset.
 
 \subsubsection{Hotel Review Dataset}
 \paragraph*{Dataframe structure}
@@ -70,11 +70,11 @@ To do this first I worked on the dataset so:
     \item resample so that there are the same number of reviews for positive and negative.
 \end{itemize}
 
-Ktrain provides me with a lot of useful features for my purpose.
-The first Ktrain function I used is text.texts\_from\_df.
+\gls{Ktrain} provides me with a lot of useful features for my purpose.
+The first \gls{Ktrain} function I used is text.texts\_from\_df.
 As it is written in the documentation \cite{noauthor_amaiyaktrain_nodate}, this function allows me to:
 
-“Loads text data from Pandas dataframe file. Class labels are assumed to be one of the following formats:
+“Loads text data from \gls{Pandas} dataframe file. Class labels are assumed to be one of the following formats:
 \begin{itemize}
     \item one-hot-encoded or multi-hot-encoded arrays representing classes
     \item labels are in a single column of string or integer values representing class labels
@@ -91,11 +91,11 @@ Mine is case number two, in fact my dataframe in Figure~\ref{fig:fig_24}, is com
 \end{figure}
 \FloatBarrier
 
-In images below are shown the function from the documentation~\ref{fig:fig_22} and the code function I used:
+In Figure~\ref{fig:fig_22} shown the function from the documentation and the code function I used:
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.75\textwidth]{images/textdf.jpg}
-\caption{Ktrain text function from documentation}
+\caption{\gls{Ktrain} text function from documentation}
 \label{fig:fig_22}
 \end{figure}
 \FloatBarrier
@@ -158,7 +158,7 @@ So with this function I load the dataframe that I processed (hotel), I use the R
 
 \subsubsection{Build a Model and Wrap in Learner}
 \paragraph{Classifier}
-In this section is described the construction of the model, to do this first I had to see what classifier Ktrain allows me to have:
+In this section is described the construction of the model, to do this first I had to see what classifier \gls{Ktrain} allows me to have:
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
 \PY{n}{text}\PY{o}{.}\PY{n}{print\PYZus{}text\PYZus{}classifiers}\PY{p}{(}\PY{p}{)}
@@ -172,15 +172,15 @@ nbsvm: NBSVM model [http://www.aclweb.org/anthology/P12-2018]
 bigru: Bidirectional GRU with pretrained fasttext word vectors
 [https://fasttext.cc/docs/en/crawl-vectors.html]
 standard\_gru: simple 2-layer GRU with randomly initialized embeddings
-bert: Bidirectional Encoder Representations from Transformers (BERT) from
+bert: Bidirectional Encoder Representations from Transformers (\gls{BERT}) from
 keras\_bert [https://arxiv.org/abs/1810.04805]
-distilbert: distilled, smaller, and faster BERT from Hugging Face transformers
+distilbert: distilled, smaller, and faster \gls{BERT} from Hugging Face transformers
 [https://arxiv.org/abs/1910.01108]
     \end{Verbatim}
 
-The classifier I need is distilbert. DistilBERT \cite{sanh_distilbert_2020} is a distilled version of BERT, in fact it reduces the size of BERT by 40\%, while retaining 97\% of its language understanding capabilities and being 60\% faster.
+The classifier I need is distilbert. DistilBERT \cite{sanh_distilbert_2020} is a distilled version of \gls{BERT}, in fact it reduces the size of \gls{BERT} by 40\%, while retaining 97\% of its language understanding capabilities and being 60\% faster.
 
-So it is smaller and faster implemented by Hugging Face transformer \cite{noauthor_distilbert_nodate}.
+So it is smaller and faster implemented by \gls{Hugging Face} transformer \cite{noauthor_distilbert_nodate}.
 To be able to use the text.text\_classifier function I helped myself with its documentation using some help directly in Jupyter file:
  \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
@@ -201,7 +201,7 @@ metrics=['accuracy'], verbose=1)
                     - 'nbsvm' for NBSVM model
                     - 'logreg' for logistic regression using embedding layers
                     - 'bigru' for Bidirectional GRU with pretrained word vectors
-                    - 'bert' for BERT Text Classification
+                    - 'bert' for \gls{BERT} Text Classification
                     - 'distilbert' for Hugging Face DistilBert model
 
         train\_data (tuple): a tuple of numpy.ndarrays: (x\_train, y\_train) or
@@ -215,7 +215,7 @@ ktrain.Dataset instance
         metrics(list): metrics to use
         verbose (boolean): verbosity of output
     Return:
-        model (Model): A Keras Model instance
+        model (Model): A \gls{Keras} Model instance
 
     \end{Verbatim}
 
@@ -238,7 +238,7 @@ Now that I have a model, I can create a learner:
 \end{tcolorbox}
 
 \paragraph{learner.lr\_find and plot()}
-Now I simulate a workout on different learning rates and its plot in figure~\ref{fig:fig_29}, using the functions:
+Now I simulate a workout on different learning rates and its \gls{plot} in figure~\ref{fig:fig_29}, using the functions:
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
 \PY{n}{learner}\PY{o}{.}\PY{n}{lr\PYZus{}find}\PY{p}{(}\PY{p}{)}
@@ -254,13 +254,13 @@ Now I simulate a workout on different learning rates and its plot in figure~\ref
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1\textwidth]{images/output_97_0.png}
-\caption{Ktrain learner plot}
+\caption{\gls{Ktrain} learner plot}
 \label{fig:fig_29}
 \end{figure}
 \FloatBarrier
 
 \paragraph{fit\_onecycle}
-The fit\_onecycle method is better in speed and accuracy as just the fit method.
+The fit\_onecycle method is better in speed and \gls{accuracy} as just the fit method.
 The fit\_onecycle is an implementation of Leslie Smith’s 1cycle policy \cite{smith_disciplined_2018}.
 By using the function:
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -284,7 +284,7 @@ Epoch 4/4
 23270/23270 [==============================] - 2588s 110ms/step - loss: 0.1708 -
 accuracy: 0.9318 - val\_loss: 0.4025 - val\_accuracy: 0.8537
     \end{Verbatim}
-At the 4th epoch I have about 85\% accuracy.
+At the 4th epoch I have about 85\% \gls{accuracy}.
 
 \paragraph{validate}
 Using the:
@@ -292,7 +292,7 @@ Using the:
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
 \PY{n}{learner}\PY{o}{.}\PY{n}{validate}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
-\end{tcolorbox}method I can create a confusion matrix on the newly trained data in order to get a more detailed picture:
+\end{tcolorbox}method I can create a \gls{Confusion matrix} on the newly trained data in order to get a more detailed picture:
     \begin{Verbatim}[commandchars=\\\{\},fontsize=\footnotesize]
               precision    recall  f1-score   support
 
@@ -338,7 +338,7 @@ Weights from best epoch have been loaded into model.
     \end{Verbatim}
 
 \subsubsection{Discuss the limitations} 
-As can be seen from the autofit code, also in this case I do not exceed 85\% accuracy on validation data, having also here a problem of overfitting.
+As can be seen from the autofit code, also in this case I do not exceed 85\% \gls{accuracy} on validation data, having also here a problem of overfitting.
 
 I then wanted to see what the data was where I had the most loss, this is possible due to:learner.view\_top\_losses(n=1),\\
 with the result: id:11764 | loss:8.19 | true:1 | pred:0).\\
@@ -358,7 +358,7 @@ I want also to use the Interactive Training \cite{jupyter_1204}.
 
 \subsubsection{Lesson learned}
 The most important of these improvements is missing, which is the work on the dataset.
-In fact, the 85\% accuracy is due to the fact of how I made the split between positive and negative reviews.
+In fact, the 85\% \gls{accuracy} is due to the fact of how I made the split between positive and negative reviews.
 
 
 \subsection{Third model: Ktrain - Hotel dataset optimized}
@@ -372,7 +372,7 @@ The continuation for this phase is as follows:
 \end{itemize}
 
 \subsubsection{Improvements}
-After making the improvements described above, I was able to create a model with an accuracy for the English language of 96\%.
+After making the improvements described above, I was able to create a model with an \gls{accuracy} for the English language of 96\%.
 
 \subsection{Fourth model: Automatic Ktrain - Filmstarts dataset}
 \label{chap:model filmstars auto}
@@ -383,16 +383,16 @@ For training I did exactly the same as for the previous models, so I have:
 \begin{itemize}
     \item clean the dataset,
     \item I have taken in consideration for the model only the more opportune data,
-    \item trained model thanks to Ktrain.
+    \item trained model thanks to \gls{Ktrain}.
 \end{itemize}
 
 \subsubsection{Major changes}
-For this model I used as in the previous Ktrain, with these modifications:
+For this model I used as in the previous \gls{Ktrain}, with these modifications:
 \begin{itemize}
-    \item BERT instead of distilBERT for greater accuracy with the German language,
+    \item \gls{BERT} instead of distilBERT for greater \gls{accuracy} with the German language,
     \item automatic model,
 \end{itemize}
-arriving at an accuracy of 90\%.
+arriving at an \gls{accuracy} of 90\%.
 
 \subsubsection{Discuss the limitations} 
 Now that I have a trained model I tried testing with a file. The file consists of 30 news articles in German.
@@ -405,5 +405,5 @@ Unfortunately, despite the model arrives at a good percentage (90\%) I noticed t
 At this point I thought the problem was with the dataset and the model so here are the improvements I want to make in the next one:
 \begin{itemize}
     \item take in consideration only 0 and 5 from the dataset,
-    \item modify ktrain.
+    \item modify \gls{Ktrain}.
 \end{itemize}
